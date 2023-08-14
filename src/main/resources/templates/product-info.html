@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Marketplace</title>
+</head>
+
+<body>
+<h1>MARKETPLACE</h1><hr>
+
+<h3>DETAIL PRODUCT INFO</h3>
+<b>Product: </b> <td th:text="${product.title}"></td><br>
+<b>Description: </b> <td th:text="${product.description}"></td><br>
+<b>Price: </b> <td th:text="${product.price}"></td><br>
+<b>City: </b> <td th:text="${product.city}"></td><br>
+<b>Author: </b> <td th:text="${product.author}"></td><br>
+<hr>
+
+<form th:action="@{'/product/delete/' + ${product.id}}"  method="post">
+    <input type="submit" value="Delete"/>
+</form>
+
+</body>
+</html>

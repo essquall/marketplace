@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Marketplace</title>
+</head>
+
+<body>
+<h1>MARKETPLACE</h1>
+<hr>
+<h3>PRODUCT LIST</h3>
+
+<div>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.title}"></td>
+<!--        <td th:text="${product.price}"></td>-->
+        <a th:href="@{'/product/' + ${product.id}}">Details...</a>
+
+    </tr>
+</div>
+<br>
+<h3>CREATE NEW PRODUCT</h3>
+<form action="/product/create" method="post">
+    Product: <input type="text" name="title"/><br><br>
+    Description: <input type="text" name="description"/><br><br>
+    Price: <input type="number" name="price"/><br><br>
+    City: <input type="text" name="city"/><br><br>
+    Author: <input type="text" name="author"/><br><br>
+    <input type="submit" value="Add product"/>
+</form>
+
+</body>
+</html>
