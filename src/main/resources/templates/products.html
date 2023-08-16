@@ -10,24 +10,37 @@
 <hr>
 <h3>PRODUCT LIST</h3>
 
+<form action="/search/" method="get">
+    Search product: <input type="text" name="title"
+                   placeholder="Write name of product"/><br><br>
+    <input type="submit" value="Search"/>
+</form>
+
+<br>
+
 <div>
     <tr th:each="product : ${products}">
         <td th:text="${product.title}"></td>
-<!--        <td th:text="${product.price}"></td>-->
-        <a th:href="@{'/product/' + ${product.id}}">Details...</a>
-
+        <a th:href="@{'/products/' + ${product.id}}">- details...</a>
     </tr>
 </div>
+
 <br>
+
 <h3>CREATE NEW PRODUCT</h3>
-<form action="/product/create" method="post">
+<form action="/products/" method="post" enctype="multipart/form-data">
     Product: <input type="text" name="title"/><br><br>
     Description: <input type="text" name="description"/><br><br>
     Price: <input type="number" name="price"/><br><br>
     City: <input type="text" name="city"/><br><br>
     Author: <input type="text" name="author"/><br><br>
+
+    First picture: <input type="file" name="file1"/><br><br>
+    Second picture: <input type="file" name="file2"/><br><br>
+
     <input type="submit" value="Add product"/>
 </form>
+
 
 </body>
 </html>

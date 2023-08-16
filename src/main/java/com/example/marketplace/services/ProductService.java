@@ -1,37 +1,22 @@
 package com.example.marketplace.services;
 
-import com.example.marketplace.model.Product;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import com.example.marketplace.model.Product;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.List;
 
-@Service
-public class ProductService {
+public interface ProductService {
 
-    private List<Product> products = new ArrayList<>();
-    private long ID = 0;
+    List<Product> getListProducts();
 
-    {
-        products.add(new Product(++ID, "PlayStation", "Simple description", 67000, "Krasnoyarsk", "David"));
-        products.add(new Product(++ID, "Iphone", "Simple description", 24000, "Moscow", "Masha"));
-    }
+    List<Product> getProductByTitle(String title);
 
-    public List<Product> listProducts() { return products; }
+    public void saveProduct(Product product, MultipartFile file1, MultipartFile file2);
 
-    public void saveProduct(Product product) {
-        product.setId(++ID);
-        products.add(product);
-    }
+    void deleteProduct(Long id);
 
-    public void deleteProduct(Long id) {
-        products.removeIf(product -> product.getId().equals(id));
-    }
+    Product getProductById(Long id);
 
-    public Product getProductById(Long id) {
-        for (Product product : products) {
-            if (product.getId().equals(id)) return product;
-        }
-        return null;
-    }
 }

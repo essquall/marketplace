@@ -5,10 +5,8 @@ import com.example.marketplace.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequiredArgsConstructor
@@ -16,25 +14,34 @@ public class DefaultController {
 
     private final ProductService productService;
 
-    @RequestMapping("/")
-    public String products(Model model) {
-        model.addAttribute("products", productService.listProducts());
+    @GetMapping("/")
+    public String getProducts(Model model) {
+        model.addAttribute("products", productService.getListProducts());
         return "products";
     }
 
-    @GetMapping("/product/{id}")
-    public String productInfo(@PathVariable Long id, Model model) {
-        model.addAttribute("product", productService.getProductById(id));
+    @GetMapping("/search/")
+    public String searchProducts(@RequestParam(name = "title", required = false) String title, Model model) {
+        model.addAttribute("products", productService.getProductByTitle(title));
+        return "products";
+    }
+
+    @GetMapping("/products/{id}")
+    public String getProductInfo(@PathVariable Long id, Model model) {
+        Product product = productService.getProductById(id);
+        model.addAttribute("product", product)
+                .addAttribute("pictures", product.getPictures());
         return "product-info";
     }
 
-    @PostMapping("/product/create")
-    public String createProduct(Product product) {
-        productService.saveProduct(product);
+    @PostMapping("/products/")
+    public String createProduct(@RequestParam("file1") MultipartFile file1,
+                                @RequestParam("file2") MultipartFile file2, Product product) {
+        productService.saveProduct(product, file1, file2);
         return "redirect:/";
     }
 
-    @PostMapping("/product/delete/{id}")
+    @PostMapping("/products/{id}")
     public String deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return "redirect:/";

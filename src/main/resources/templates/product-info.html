@@ -9,6 +9,13 @@
 <h1>MARKETPLACE</h1><hr>
 
 <h3>DETAIL PRODUCT INFO</h3>
+
+<div>
+    <tr th:each="picture : ${pictures}">
+        <img th:src="@{'/pictures/' + ${picture.id}}" height="60х" />
+    </tr>
+</div>
+
 <b>Product: </b> <td th:text="${product.title}"></td><br>
 <b>Description: </b> <td th:text="${product.description}"></td><br>
 <b>Price: </b> <td th:text="${product.price}"></td><br>
@@ -16,7 +23,7 @@
 <b>Author: </b> <td th:text="${product.author}"></td><br>
 <hr>
 
-<form th:action="@{'/product/delete/' + ${product.id}}"  method="post">
+<form th:action="@{'/products/' + ${product.id}}"  method="post">
     <input type="submit" value="Delete"/>
 </form>
 
