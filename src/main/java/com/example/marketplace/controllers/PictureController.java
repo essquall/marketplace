@@ -3,6 +3,7 @@ package com.example.marketplace.controllers;
 import com.example.marketplace.model.Picture;
 import com.example.marketplace.repositories.PictureRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,7 +16,7 @@ import java.io.ByteArrayInputStream;
 import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PictureController {
 
     private final PictureRepository pictureRepository;

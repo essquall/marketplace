@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequiredArgsConstructor
-public class DefaultController {
+public class ProductController {
 
     private final ProductService productService;
 

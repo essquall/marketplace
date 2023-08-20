@@ -3,6 +3,7 @@ package com.example.marketplace.services;
 import com.example.marketplace.model.Picture;
 import com.example.marketplace.model.Product;
 import com.example.marketplace.repositories.ProductRepository;
+import com.example.marketplace.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

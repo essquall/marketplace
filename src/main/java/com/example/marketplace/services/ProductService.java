@@ -4,7 +4,6 @@ package com.example.marketplace.services;
 import com.example.marketplace.model.Product;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface ProductService {
@@ -13,7 +12,7 @@ public interface ProductService {
 
     List<Product> getProductByTitle(String title);
 
-    public void saveProduct(Product product, MultipartFile file1, MultipartFile file2);
+    void saveProduct(Product product, MultipartFile file1, MultipartFile file2);
 
     void deleteProduct(Long id);
 
