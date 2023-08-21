@@ -6,16 +6,25 @@
 </head>
 
 <body>
-<h1>MARKETPLACE
-    <form action="/logout" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
-</h1><hr>
+<h1>MARKETPLACE</h1>
 
 <h3>
     <a href="/login">Sign In</a> || <a href="/registration">Registration</a>
-</h3><hr>
+</h3>
 
+<h3>
+    <td th:if="${user.email != null}">
+        <b>My name: </b> <td th:text="${user.name}"></td><br>
+    </td>
+</h3>
+
+<h3>
+    <td th:if="${user.email != null}">
+        <form action="/logout" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </td>
+</h3>
 
 <h3>PRODUCT LIST</h3>
 
@@ -26,30 +35,28 @@
 </form>
 
 <br>
-
 <div>
     <tr th:each="product : ${products}">
         <td th:text="${product.title}"></td>
         <a th:href="@{'/products/' + ${product.id}}">- details...</a>
     </tr>
 </div>
-
 <br>
 
+<td th:if="${user.email != null}">
 <h3>CREATE NEW PRODUCT</h3>
 <form action="/products/" method="post" enctype="multipart/form-data">
     Product: <input type="text" name="title"/><br><br>
     Description: <input type="text" name="description"/><br><br>
     Price: <input type="number" name="price"/><br><br>
     City: <input type="text" name="city"/><br><br>
-    Author: <input type="text" name="author"/><br><br>
 
     First picture: <input type="file" name="file1"/><br><br>
     Second picture: <input type="file" name="file2"/><br><br>
 
     <input type="submit" value="Add product"/>
 </form>
-
+</td>
 
 </body>
 </html>

@@ -31,11 +31,12 @@ public class Product {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "author", nullable = false)
-    private String author;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
     private List<Picture> pictures = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "creation_time", nullable = false)
     private LocalDateTime creationTime;

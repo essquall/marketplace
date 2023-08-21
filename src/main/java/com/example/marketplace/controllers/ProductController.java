@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
+
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
@@ -15,8 +17,9 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/")
-    public String getProducts(Model model) {
-        model.addAttribute("products", productService.getListProducts());
+    public String getProducts(Model model, Principal principal) {
+        model.addAttribute("products", productService.getListProducts())
+                .addAttribute("user", productService.getUserByPrincipal(principal));
         return "products";
     }
 
@@ -36,8 +39,8 @@ public class ProductController {
 
     @PostMapping("/products/")
     public String createProduct(@RequestParam("file1") MultipartFile file1,
-                                @RequestParam("file2") MultipartFile file2, Product product) {
-        productService.saveProduct(product, file1, file2);
+                                @RequestParam("file2") MultipartFile file2,Product product, Principal principal) {
+        productService.saveProduct(product, file1, file2, principal);
         return "redirect:/";
     }
 
