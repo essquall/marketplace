@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    List<Product> getListProducts();
+    List<Product> getListProducts(String title);
 
     List<Product> getProductByTitle(String title);
 

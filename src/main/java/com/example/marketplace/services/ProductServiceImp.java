@@ -5,7 +5,6 @@ import com.example.marketplace.model.Product;
 import com.example.marketplace.model.User;
 import com.example.marketplace.repositories.ProductRepository;
 import com.example.marketplace.repositories.UserRepository;
-import com.example.marketplace.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +22,8 @@ public class ProductServiceImp implements ProductService {
     private final UserRepository userRepository;
 
     @Override
-    public List<Product> getListProducts() {
+    public List<Product> getListProducts(String title) {
+        if (title != null) return productRepository.findByTitle(title);
         return productRepository.findAll();
     }
 

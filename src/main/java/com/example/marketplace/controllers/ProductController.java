@@ -17,15 +17,9 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/")
-    public String getProducts(Model model, Principal principal) {
-        model.addAttribute("products", productService.getListProducts())
-                .addAttribute("user", productService.getUserByPrincipal(principal));
-        return "products";
-    }
-
-    @GetMapping("/search/")
-    public String searchProducts(@RequestParam(name = "title", required = false) String title, Model model) {
-        model.addAttribute("products", productService.getProductByTitle(title));
+    public String getProducts(@RequestParam(name = "title", required = false) String title, Model model, Principal principal) {
+        model.addAttribute("products", productService.getListProducts(title));
+        model.addAttribute("user", productService.getUserByPrincipal(principal));
         return "products";
     }
 
