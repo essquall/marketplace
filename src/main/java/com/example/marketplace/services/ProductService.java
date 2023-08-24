@@ -1,6 +1,7 @@
 package com.example.marketplace.services;
 
 
+import com.example.marketplace.model.Picture;
 import com.example.marketplace.model.Product;
 import com.example.marketplace.model.User;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,8 @@ public interface ProductService {
     void saveProduct(Product product, MultipartFile file1, MultipartFile file2, Principal principal);
 
     User getUserByPrincipal(Principal principal);
+
+    Picture parseToPicture(MultipartFile file);
 
     void deleteProduct(Long id);
 

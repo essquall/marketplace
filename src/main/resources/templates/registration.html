@@ -10,11 +10,12 @@
 
 <h3>Registration</h3>
 
-<form action="/registration" method="post">
+<form action="/registration" method="post" enctype="multipart/form-data">
     User: <input type="text" name="name"/><br><br>
     Email: <input type="email" name="email"/><br><br>
     Phone number: <input type="text" name="phoneNumber"/><br><br>
     Password: <input type="password" name="password"/><br><br>
+    Avatar: <input type="file" name="avatar-file"/><br><br>
     <input type="submit" value="Accept"/>
 </form>
 

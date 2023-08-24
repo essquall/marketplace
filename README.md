@@ -16,30 +16,36 @@ Internet service for posting product advertisements
 
 ## How to use
 #### `stage-1`
-Register user
+Register user. You can also add personal photo 
 
-![img](https://github.com/essquall/marketplace/assets/132898801/827fd2da-c5d0-4924-b04c-c26bf6b1d1f4)
+![img.png](img.png)
 
 #### `stage-2`
 Authorize user
 
-![img_1](https://github.com/essquall/marketplace/assets/132898801/08a48bfa-246a-46cc-914d-6363e2cdc55b)
+![img_2.png](img_2.png)
 
 #### `stage-3`
-Create your advertisement
+Create your advertisements as many as you want
 
-![img_2](https://github.com/essquall/marketplace/assets/132898801/8be47049-f720-40f5-9776-61dc5e2dc834)
+![img_3.png](img_3.png)
 
 #### `stage-4`
-Press Sign Out - Home page.
+Press "Sign Out" → "Home page".
 Now your advertisements can see the whole world
 
-![img_4](https://github.com/essquall/marketplace/assets/132898801/b8ed0153-e295-4cdc-a3fd-496de8b44cd0)
+![img_4.png](img_4.png)
 
 #### `stage-5`
-Details show your number to contact you
+Details show all information about your product
 
-![img_5](https://github.com/essquall/marketplace/assets/132898801/cf92a293-6085-4043-a246-33c85b52f042) ![img_11](https://github.com/essquall/marketplace/assets/132898801/efc1a5d0-3926-40d5-b920-07979f1e3d3d)
+![img_5.png](img_5.png) ![img_10.png](img_10.png)
+
+#### `stage-6`
+Click on "author" to see phone number and other details
+
+![img_11.png](img_11.png)
+
 
 ## Technologies
 * Java

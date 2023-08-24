@@ -23,7 +23,7 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/products/**", "/pictures/**", "/registration")
+                .requestMatchers("/", "/products/**", "/pictures/**", "/users/**", "/registration")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

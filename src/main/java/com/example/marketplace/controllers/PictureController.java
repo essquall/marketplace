@@ -1,7 +1,9 @@
 package com.example.marketplace.controllers;
 
 import com.example.marketplace.model.Picture;
+import com.example.marketplace.model.User;
 import com.example.marketplace.repositories.PictureRepository;
+import com.example.marketplace.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
@@ -19,6 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PictureController {
 
+    private final UserRepository userRepository;
     private final PictureRepository pictureRepository;
 
     @GetMapping("/pictures/{id}")
@@ -34,4 +37,17 @@ public class PictureController {
                 .body(new InputStreamResource(new ByteArrayInputStream(picture.getBytes())));
     }
 
+    @GetMapping("/pictures/user/{id}")
+    public ResponseEntity<?> getAvatarByUserId(@PathVariable Long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        User user = optionalUser.get();
+        Picture avatar = user.getAvatar();
+        return ResponseEntity.ok().header("fileName", avatar.getFileName())
+                .contentType(MediaType.valueOf(avatar.getContentType()))
+                .contentLength(avatar.getSize())
+                .body(new InputStreamResource(new ByteArrayInputStream(avatar.getBytes())));
+    }
 }

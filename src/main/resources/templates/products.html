@@ -7,14 +7,23 @@
 
 <body>
 <h1>MARKETPLACE</h1>
+<hr>
 
 <h3>
-    <a href="/login">Sign In</a> || <a href="/registration">Registration</a>
+    <td th:if="${user.email == null}">
+        <a href="/login">Sign In</a> <a href="/registration">Registration</a>
+    </td>
 </h3>
 
 <h3>
     <td th:if="${user.email != null}">
-        <b>My name: </b> <td th:text="${user.name}"></td><br>
+        <img th:src="@{'/pictures/user/' + ${user.id}}" height="60х" />
+    </td>
+</h3>
+
+<h3>
+    <td th:if="${user.email != null}">
+        <b>Username: </b> <td th:text="${user.name}"></td><br>
     </td>
 </h3>
 
@@ -25,6 +34,8 @@
         </form>
     </td>
 </h3>
+
+<hr>
 
 <h3>PRODUCT <a href="/">LIST</a></h3>
 
@@ -38,11 +49,12 @@
 <div>
     <tr th:each="product : ${products}">
         <td th:text="${product.title}"></td>
-        <a th:href="@{'/products/' + ${product.id}}">- details...</a>
+        <a th:href="@{'/products/' + ${product.id}}">- details</a>
     </tr>
 </div>
 <br>
 
+<hr>
 <td th:if="${user.email != null}">
 <h3>CREATE NEW ADVERTISEMENT</h3>
 <form action="/products/" method="post" enctype="multipart/form-data">

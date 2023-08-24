@@ -60,7 +60,8 @@ public class ProductServiceImp implements ProductService {
         return userRepository.findByEmail(principal.getName());
     }
 
-    private Picture parseToPicture(MultipartFile file) {
+    @Override
+    public Picture parseToPicture(MultipartFile file) {
         Picture picture = new Picture();
         try {
             picture.setName(file.getName());

@@ -18,13 +18,12 @@
 
 <b>Product: </b> <td th:text="${product.title}"></td><br>
 <b>Description: </b> <td th:text="${product.description}"></td><br>
-<b>Price: </b> <td th:text="${product.price}"></td><br>
+<b>Price: </b> <td th:text="${product.price}"></td>₽ <br>
 <b>City: </b> <td th:text="${product.city}"></td><br>
-<b>Author: </b> <td th:text="${product.user.name}"></td><br>
-<b>Phone number: </b> <td th:text="${product.user.phoneNumber}"></td><br>
+<b>Author: </b>  <a th:href="@{'/users/' + ${product.user.id}}"> <td th:text="${product.user.name}"></td> </a><br>
 <hr>
 
-<h2><a href="/">Home page</a></h2>
+<h3><a href="/">Home page</a></h3>
 
 <!--<form th:action="@{'/products/' + ${product.id}}"  method="post">-->
 <!--    <input type="submit" value="Delete"/>-->

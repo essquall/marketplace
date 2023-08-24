@@ -41,7 +41,6 @@ public class Product {
     @Column(name = "creation_time", nullable = false)
     private LocalDateTime creationTime;
 
-
     public void addPicture(Picture picture) {
         picture.setProduct(this);
         pictures.add(picture);

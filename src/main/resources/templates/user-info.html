@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Marketplace</title>
+</head>
+
+<body>
+<h1>MARKETPLACE</h1><hr>
+
+<h3>USER DETAIL INFO</h3>
+
+<div>
+    <img th:src="@{'/pictures/user/' + ${user.id}}" height="60х" />
+</div>
+
+<b>Name: </b> <td th:text="${user.name}"></td><br>
+<b>Phone number: </b> <td th:text="${user.phoneNumber}"></td><br>
+<b>Email: </b> <td th:text="${user.email}"></td><br>
+
+<hr>
+
+<h3>USER PRODUCTS</h3>
+
+<div>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.title}"></td>
+        <a th:href="@{'/products/' + ${product.id}}">- details</a>
+    </tr>
+</div>
+
+<hr>
+
+<h3><a href="/">Home page</a></h3>
+
+</body>
+</html>
